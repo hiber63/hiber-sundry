@@ -11,5 +11,12 @@
 
     <artifactId>hiber-user</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.hiber</groupId>
+            <artifactId>hiber-base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
