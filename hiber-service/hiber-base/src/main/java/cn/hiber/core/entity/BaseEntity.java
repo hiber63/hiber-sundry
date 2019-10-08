@@ -34,7 +34,7 @@ public abstract class BaseEntity implements Identifiable,Serializable {
     private String createUserId;
     @CreatedDate
     @Column(name = "CREATE_DATE", nullable = false)
-    private Date creteDate;
+    private Date createDate;
     //    @LastModifiedBy
     @Column(name = "UPDATE_ID", length = 32)
     private String updateUserId;
