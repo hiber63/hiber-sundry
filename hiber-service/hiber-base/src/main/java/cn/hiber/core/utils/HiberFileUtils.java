@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * @author hiber
  */
-public class FileUtils {
+public class HiberFileUtils {
 
 	public static String addPath(String... paths) {
 		StringBuffer ret = new StringBuffer();
