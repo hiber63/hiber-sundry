@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @author hiber
  */
-public class HiberSecReamSmiple extends AuthorizingRealm {
+public class HiberSecReamSimple extends AuthorizingRealm {
 
     @Autowired
     HiberUserRepository userRepository;
