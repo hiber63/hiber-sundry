@@ -1,9 +1,10 @@
 package cn.hiber.sec.entity;
 
+import cn.hiber.core.entity.BaseEntity;
 import lombok.Data;
 
 @Data
-public class HiberUser{
+public class HiberUser extends BaseEntity {
 
 	private String username;
 	private String password;
