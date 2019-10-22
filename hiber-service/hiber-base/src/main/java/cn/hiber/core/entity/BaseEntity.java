@@ -24,19 +24,20 @@ public abstract class BaseEntity implements Identifiable,Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
     @Id
     @GeneratedValue(generator = "gene-uuid")
-    @GenericGenerator(name = "gene-uuid", strategy = "uuid")
-    @Column(name = "ID", nullable = false, length = 32)
+    @GenericGenerator(name = "gene-uuid", strategy = "org.hibernate.id.UUIDGenerator" )
+    @Column(name = "ID", nullable = false, length = 50)
     private String id;
     //    @CreatedBy
-    @Column(name = "CREATE_ID", length = 32)
+    @Column(name = "CREATE_ID", length = 50)
     private String createUserId;
     @CreatedDate
     @Column(name = "CREATE_DATE", nullable = false)
     private Date createDate;
     //    @LastModifiedBy
-    @Column(name = "UPDATE_ID", length = 32)
+    @Column(name = "UPDATE_ID", length = 50)
     private String updateUserId;
     @LastModifiedDate
     @Column(name = "UPDATE_DATE", nullable = false)

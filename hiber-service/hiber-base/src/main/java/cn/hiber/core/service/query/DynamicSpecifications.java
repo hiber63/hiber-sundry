@@ -20,35 +20,35 @@ public class DynamicSpecifications {
 				if(CollectionUtils.isNotEmpty(filters)) {
 					List<Predicate> predicates = Lists.newArrayList();
 					for(SearchFilter filter : filters) {
-						String[] names = StringUtils.split(filter.fieldName, ".");
+						String[] names = StringUtils.split(filter.getFieldName(), ".");
 						Path expression = root.get(names[0]);
 						for (int i = 1; i < names.length; i++) {
 							expression = expression.get(names[i]);
 						}
-						switch (filter.operator) {
+						switch (filter.getOperator()) {
 						case EQ:
-							predicates.add(builder.equal(expression, filter.value));
+							predicates.add(builder.equal(expression, filter.getValue()));
 							break;
 						case NEQ:
-							predicates.add(builder.notEqual(expression, filter.value));
+							predicates.add(builder.notEqual(expression, filter.getValue()));
 							break;
 						case LIKE:
-							predicates.add(builder.like(expression, "%" + filter.value + "%"));
+							predicates.add(builder.like(expression, "%" + filter.getValue() + "%"));
 							break;
 						case GT:
-							predicates.add(builder.greaterThan(expression, (Comparable) filter.value));
+							predicates.add(builder.greaterThan(expression, (Comparable) filter.getValue()));
 							break;
 						case LT:
-							predicates.add(builder.lessThan(expression, (Comparable) filter.value));
+							predicates.add(builder.lessThan(expression, (Comparable) filter.getValue()));
 							break;
 						case GTE:
-							predicates.add(builder.greaterThanOrEqualTo(expression, (Comparable) filter.value));
+							predicates.add(builder.greaterThanOrEqualTo(expression, (Comparable) filter.getValue()));
 							break;
 						case LTE:
-							predicates.add(builder.lessThanOrEqualTo(expression, (Comparable) filter.value));
+							predicates.add(builder.lessThanOrEqualTo(expression, (Comparable) filter.getValue()));
 							break;
 						case IN:
-							String[] values = StringUtils.split(filter.value.toString(), ",");
+							String[] values = StringUtils.split(filter.getValue().toString(), ",");
 							In in = builder.in(expression);
 							for (String string : values) {
 								in.value(string);
