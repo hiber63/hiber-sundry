@@ -12,9 +12,9 @@ import java.io.Serializable;
 /**
  * @author hiber
  */
-public class HiberJpaRepositoryFactory extends JpaRepositoryFactory {
+public class HiberJpaStringRepositoryFactory extends JpaRepositoryFactory {
 	
-	public HiberJpaRepositoryFactory(EntityManager entityManager) {
+	public HiberJpaStringRepositoryFactory(EntityManager entityManager) {
 		super(entityManager);
 	}
 
@@ -27,6 +27,6 @@ public class HiberJpaRepositoryFactory extends JpaRepositoryFactory {
 	@Override
 	protected JpaRepositoryImplementation<?, ?> getTargetRepository(RepositoryInformation information, EntityManager entityManager) {
 		JpaEntityInformation<?, Serializable> entityInformation = getEntityInformation(information.getDomainType());
-		return new BaseRepositoryImpl(entityInformation, entityManager);
+		return new StringRepositoryImpl(entityInformation, entityManager);
 	}
 }

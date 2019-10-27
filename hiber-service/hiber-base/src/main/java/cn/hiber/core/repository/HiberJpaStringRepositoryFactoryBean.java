@@ -10,15 +10,15 @@ import java.io.Serializable;
 /**
  * @author hiber
  */
-public class HiberJpaRepositoryFactoryBean extends JpaRepositoryFactoryBean<BaseRepository<BaseEntity, Serializable>, BaseEntity, Serializable> {
+public class HiberJpaStringRepositoryFactoryBean extends JpaRepositoryFactoryBean<BaseRepository<BaseEntity, Serializable>, BaseEntity, Serializable> {
 
-	public HiberJpaRepositoryFactoryBean(Class<? extends BaseRepository<BaseEntity, Serializable>> repositoryInterface) {
+	public HiberJpaStringRepositoryFactoryBean(Class<? extends BaseRepository<BaseEntity, Serializable>> repositoryInterface) {
 		super(repositoryInterface);
 	}
 
 	@Override
 	protected RepositoryFactorySupport createRepositoryFactory(EntityManager entityManager) {
-		return new HiberJpaRepositoryFactory(entityManager);
+		return new HiberJpaStringRepositoryFactory(entityManager);
 	}
 
 

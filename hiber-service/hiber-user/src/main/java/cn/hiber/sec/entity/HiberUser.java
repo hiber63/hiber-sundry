@@ -1,6 +1,7 @@
 package cn.hiber.sec.entity;
 
 import cn.hiber.core.entity.BaseEntity;
+import cn.hiber.core.entity.StringEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 @DynamicUpdate
 @Entity
 @Table(name = "hiber_sec_user")
-public class HiberUser extends BaseEntity {
+public class HiberUser extends StringEntity {
 
 	private String username;
 	private String password;

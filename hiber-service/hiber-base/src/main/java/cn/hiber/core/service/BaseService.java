@@ -1,18 +1,20 @@
 package cn.hiber.core.service;
 
+import cn.hiber.core.entity.BaseEntity;
 import cn.hiber.core.repository.BaseRepository;
 import cn.hiber.core.service.query.PageQueryVo;
 import cn.hiber.core.service.query.SearchFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
 /**
  * @author hiber
  */
-public interface BaseService<T, R extends BaseRepository<T, String>> {
+public interface BaseService<ID extends Serializable,T extends BaseEntity, R extends BaseRepository<T, ID>> {
 	
 	//单个保存
 	T save(T entity);
@@ -21,16 +23,16 @@ public interface BaseService<T, R extends BaseRepository<T, String>> {
 	void saveInBatchs(Collection<T> entities);
 	
 	//单个删除
-	void delete(String id);
+	void delete(ID id);
 	
 	//批量删除
-	void deleteInBatchs(Collection<String> ids);
+	void deleteInBatchs(Collection<ID> ids);
 	
 	//根据主键查询
-	T findById(String id);
+	T findById(ID id);
 	
 	//根据主键查询
-	List<T> findByIds(Collection<String> ids);
+	List<T> findByIds(Collection<ID> ids);
 	
 	//带条件查询
 	List<T> find(List<SearchFilter> filters);

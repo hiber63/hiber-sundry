@@ -1,16 +1,16 @@
 package cn.hiber.core.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Date;
+
 
 /**
  * 实体基类,结合新版本Spring Data提供的审计功能
@@ -18,18 +18,12 @@ import java.util.Date;
  * @author hiber
  */
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 @Data
-public abstract class BaseEntity implements Identifiable,Serializable {
+@EntityListeners(AuditingEntityListener.class)
+public abstract class BaseEntity<ID> implements Identifiable<ID>,Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
-    @Id
-    @GeneratedValue(generator = "gene-uuid")
-    @GenericGenerator(name = "gene-uuid", strategy = "org.hibernate.id.UUIDGenerator" )
-    @Column(name = "ID", nullable = false, length = 50)
-    private String id;
     //    @CreatedBy
     @Column(name = "CREATE_ID", length = 50)
     private String createUserId;

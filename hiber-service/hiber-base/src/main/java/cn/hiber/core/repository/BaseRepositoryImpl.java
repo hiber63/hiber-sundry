@@ -1,5 +1,6 @@
 package cn.hiber.core.repository;
 
+import cn.hiber.core.entity.BaseEntity;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
@@ -9,7 +10,7 @@ import java.io.Serializable;
 /**
  * @author hiber
  */
-public class BaseRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BaseRepository<T, ID> {
+public abstract class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements BaseRepository<T, ID> {
 	
 	private EntityManager entityManager;
 
