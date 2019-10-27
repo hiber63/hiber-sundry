@@ -8,6 +8,7 @@ import cn.hiber.core.service.query.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -61,8 +62,28 @@ public class BaseServiceImpl<ID extends Serializable,T extends BaseEntity, R ext
 	}
 
 	@Override
+	public List<T> findAll() {
+		return repository.findAll();
+	}
+
+	@Override
+	public List<T> findAll(Sort sort) {
+		return repository.findAll(sort);
+	}
+
+	@Override
 	public List<T> find(List<SearchFilter> filters) {
 		return repository.findAll(DynamicSpecifications.bySearchFilter(filters));
+	}
+
+	@Override
+	public List<T> find(List<SearchFilter> filters, Sort sort) {
+		return repository.findAll(DynamicSpecifications.bySearchFilter(filters),sort);
+	}
+
+	@Override
+	public Long count(List<SearchFilter> filters) {
+		return repository.count(DynamicSpecifications.bySearchFilter(filters));
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import cn.hiber.core.service.query.PageQueryVo;
 import cn.hiber.core.service.query.SearchFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -33,9 +34,20 @@ public interface BaseService<ID extends Serializable,T extends BaseEntity, R ext
 	
 	//根据主键查询
 	List<T> findByIds(Collection<ID> ids);
-	
-	//带条件查询
+
+	//查找所有
+	List<T> findAll();
+
+	//查找所有（可排序）
+	List<T> findAll(Sort sort);
+
+	//带条件查询,默认排序
 	List<T> find(List<SearchFilter> filters);
+
+	//带条件查询，需控制排序
+	List<T> find(List<SearchFilter> filters, Sort sort);
+
+	Long count(List<SearchFilter> filters);
 	
 	//带条件分页查询
 	Page<T> pageQuerySimple(List<SearchFilter> filters, Pageable pageable);
