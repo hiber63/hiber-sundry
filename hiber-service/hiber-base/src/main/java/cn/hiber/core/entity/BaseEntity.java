@@ -1,5 +1,6 @@
 package cn.hiber.core.entity;
 
+import cn.hiber.core.utils.BeanCopyUtils;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -26,14 +27,19 @@ public abstract class BaseEntity<ID> implements Identifiable<ID>,Serializable {
 
     //    @CreatedBy
     @Column(name = "CREATE_ID", length = 50)
-    private String createUserId;
+    private String createId;
     @CreatedDate
     @Column(name = "CREATE_DATE", nullable = false)
     private Date createDate;
     //    @LastModifiedBy
     @Column(name = "UPDATE_ID", length = 50)
-    private String updateUserId;
+    private String updateId;
     @LastModifiedDate
     @Column(name = "UPDATE_DATE", nullable = false)
     private Date updateDate;
+
+    public void copy(BaseEntity e) {
+        BeanCopyUtils.beanCopyWithIngore(e, this);
+    }
+
 }
