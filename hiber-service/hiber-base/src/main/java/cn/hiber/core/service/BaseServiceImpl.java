@@ -96,15 +96,14 @@ public class BaseServiceImpl<ID extends Serializable,T extends BaseEntity, R ext
 		return repository.findAll(DynamicSpecifications.bySearchFilter(getFilters(pageQueryVo)), pageable);
 	}
 
+	@Override
+	public Page<T> pageQuery(PageQueryVo pageQueryVo) {
+		return repository.findAll(DynamicSpecifications.bySearchFilter(getFilters(pageQueryVo)), pageQueryVo.tranfer2PageRequest());
+	}
+
 	//protected,提供子类重写，扩展每个业务模块独立的符合查询条件
 	protected List<SearchFilter> getFilters(PageQueryVo pageQueryVo) {
 		return null;
 	}
-
-
-
-
-
-
-
+	
 }

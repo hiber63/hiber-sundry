@@ -53,6 +53,9 @@ public interface BaseService<ID extends Serializable,T extends BaseEntity, R ext
 	Page<T> pageQuerySimple(List<SearchFilter> filters, Pageable pageable);
 	
 	//抽离页面复合查询条件转化SearchFilter过程，封装PageQueryVo来提供统一接口
+	@Deprecated
 	Page<T> pageQuery(PageQueryVo pageQueryVo, Pageable pageable);
+
+	Page<T> pageQuery(PageQueryVo pageQueryVo);
 	
 }

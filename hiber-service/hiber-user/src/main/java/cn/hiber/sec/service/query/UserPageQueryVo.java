@@ -4,7 +4,7 @@ import cn.hiber.core.service.query.PageQueryVo;
 import lombok.Data;
 
 @Data
-public class UserPageQueryVo implements PageQueryVo {
+public class UserPageQueryVo extends PageQueryVo {
 
     private String username;
     private String nickname;
