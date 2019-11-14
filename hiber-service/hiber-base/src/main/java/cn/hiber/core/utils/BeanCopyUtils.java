@@ -1,8 +1,11 @@
 package cn.hiber.core.utils;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.*;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
@@ -43,4 +46,42 @@ public class BeanCopyUtils {
         }
         return emptyNames;
     }
+
+    public static <E> Map<String, Object> obj2map(E source, String[] ps) {
+        Map<String, Object> map = new HashMap<>();
+        if (source == null)
+            return null;
+        if (ps == null || ps.length < 1) {
+            return null;
+        }
+        for (String p : ps) {
+            PropertyDescriptor sourcePd = BeanUtils.getPropertyDescriptor(
+                    source.getClass(), p);
+            if (sourcePd != null && sourcePd.getReadMethod() != null) {
+                try {
+                    Method readMethod = sourcePd.getReadMethod();
+                    if (!Modifier.isPublic(readMethod.getDeclaringClass()
+                            .getModifiers())) {
+                        readMethod.setAccessible(true);
+                    }
+                    Object value = readMethod.invoke(source, new Object[0]);
+                    map.put(p, value);
+                } catch (Exception ex) {
+                    throw new RuntimeException("Could not copy properties from source to target", ex);
+                }
+            }
+        }
+        return map;
+    }
+
+    public static <E> List<Map<String, Object>> objs2mapList(List<E> sources, String[] ps) {
+        List<Map<String, Object>> list = new ArrayList<>();
+        if(CollectionUtils.isNotEmpty(sources)) {
+            for(E obj:sources) {
+                list.add(obj2map(obj,ps));
+            }
+        }
+        return list;
+    }
+
 }
