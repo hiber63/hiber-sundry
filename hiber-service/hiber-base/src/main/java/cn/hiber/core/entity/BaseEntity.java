@@ -14,8 +14,6 @@ import java.util.Date;
 
 
 /**
- * 实体基类,结合新版本Spring Data提供的审计功能
- * //TODO 创建人以及最后更新人，待认证体系接入后补充
  * @author hiber
  */
 @MappedSuperclass
@@ -26,16 +24,16 @@ public abstract class BaseEntity<ID> implements Identifiable<ID>,Serializable {
     private static final long serialVersionUID = 1L;
 
     //    @CreatedBy
-    @Column(name = "CREATE_ID", length = 50)
-    private String createId;
+    @Column(name = "cid")
+    private ID createId;
     @CreatedDate
-    @Column(name = "CREATE_DATE", nullable = false)
+    @Column(name = "cdate", nullable = false)
     private Date createDate;
     //    @LastModifiedBy
-    @Column(name = "UPDATE_ID", length = 50)
-    private String updateId;
+    @Column(name = "uid")
+    private ID updateId;
     @LastModifiedDate
-    @Column(name = "UPDATE_DATE", nullable = false)
+    @Column(name = "udate", nullable = false)
     private Date updateDate;
 
     public void copy(BaseEntity e) {

@@ -19,6 +19,6 @@ public abstract class StringEntity extends BaseEntity<String> {
     @Id
     @GeneratedValue(generator = "gene-uuid")
     @GenericGenerator(name = "gene-uuid", strategy = "org.hibernate.id.UUIDGenerator" )
-    @Column(name = "ID", nullable = false, length = 50)
+    @Column(name = "id", nullable = false, length = 50)
     private String id;
 }
