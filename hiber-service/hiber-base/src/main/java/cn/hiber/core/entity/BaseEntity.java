@@ -28,13 +28,13 @@ public abstract class BaseEntity<ID> implements Identifiable<ID>,Serializable {
     private ID createId;
     @CreatedDate
     @Column(name = "cdate", nullable = false)
-    private Date createDate;
+    private Date cdate;
     //    @LastModifiedBy
     @Column(name = "uid")
     private ID updateId;
     @LastModifiedDate
     @Column(name = "udate", nullable = false)
-    private Date updateDate;
+    private Date udate;
 
     public void copy(BaseEntity e) {
         BeanCopyUtils.beanCopyWithIngore(e, this);
