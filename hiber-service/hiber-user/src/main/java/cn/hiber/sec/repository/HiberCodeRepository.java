@@ -1,11 +1,11 @@
 package cn.hiber.sec.repository;
 
-import cn.hiber.core.repository.StringRepository;
+import cn.hiber.core.repository.LongRepository;
 import cn.hiber.sec.entity.HiberCode;
 
 /**
  * @author hiber
  */
-public interface HiberCodeRepository extends StringRepository<HiberCode> {
+public interface HiberCodeRepository extends LongRepository<HiberCode> {
 
 }

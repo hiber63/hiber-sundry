@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HiberPrincipal implements Identifiable {
+public class HiberPrincipal implements Identifiable<Long> {
 
-    private String id;
+    private Long id;
     private String username;
 }

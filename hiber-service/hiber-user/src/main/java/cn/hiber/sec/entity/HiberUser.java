@@ -1,5 +1,6 @@
 package cn.hiber.sec.entity;
 
+import cn.hiber.core.entity.LongEntity;
 import cn.hiber.core.entity.StringEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ import javax.persistence.Table;
 @DynamicUpdate
 @Entity
 @Table(name = "hiber_sec_user")
-public class HiberUser extends StringEntity {
+public class HiberUser extends LongEntity {
 
 	@Column(name = "USERNAME",unique = true,nullable = false)
 	private String username;

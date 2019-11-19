@@ -1,6 +1,6 @@
 package cn.hiber.sec.entity;
 
-import cn.hiber.core.entity.StringEntity;
+import cn.hiber.core.entity.LongEntity;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @DynamicUpdate
 @Entity
 @Table(name = "hiber_sec_user_role")
-public class HiberUserRole extends StringEntity {
+public class HiberUserRole extends LongEntity {
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")

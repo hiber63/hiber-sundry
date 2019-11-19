@@ -1,6 +1,6 @@
 package cn.hiber.sec.service.impl;
 
-import cn.hiber.core.service.StringServiceImpl;
+import cn.hiber.core.service.LongServiceImpl;
 import cn.hiber.core.service.query.Operator;
 import cn.hiber.core.service.query.PageQueryVo;
 import cn.hiber.core.service.query.SearchFilter;
@@ -18,7 +18,7 @@ import java.util.List;
  * @author hiber
  */
 @Service
-public class HiberUserServiceImpl extends StringServiceImpl<HiberUser, HiberUserRepository> implements HiberUserService {
+public class HiberUserServiceImpl extends LongServiceImpl<HiberUser, HiberUserRepository> implements HiberUserService {
 
     @Override
     protected List<SearchFilter> getFilters(PageQueryVo pageQueryVo) {
