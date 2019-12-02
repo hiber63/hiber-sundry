@@ -6,8 +6,6 @@
     <modules>
         <module>hiber-base</module>
         <module>hiber-user</module>
-        <module>hiber-admin</module>
-        <module>hiber-biz</module>
     </modules>
     <parent>
         <artifactId>hiber-sundry</artifactId>
