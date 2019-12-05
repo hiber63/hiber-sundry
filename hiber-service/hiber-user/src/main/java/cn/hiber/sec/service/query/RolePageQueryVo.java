@@ -10,5 +10,6 @@ import lombok.Data;
 public class RolePageQueryVo extends PageQueryVo {
     
     private String roleName;
+    private String roleCode;
     
 }

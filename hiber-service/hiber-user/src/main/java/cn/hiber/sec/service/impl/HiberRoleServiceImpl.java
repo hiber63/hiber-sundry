@@ -26,8 +26,12 @@ public class HiberRoleServiceImpl extends LongServiceImpl<HiberRole, HiberRoleRe
         if(pageQueryVo != null) {
             RolePageQueryVo vo = (RolePageQueryVo) pageQueryVo;
             String roleName = vo.getRoleName();
+            String roleCode = vo.getRoleCode();
             if(StringUtils.isNotBlank(roleName)) {
                 filters.add(new SearchFilter("roleName",Operator.LIKE,roleName));
+            }
+            if(StringUtils.isNotBlank(roleCode)) {
+                filters.add(new SearchFilter("roleCode",Operator.LIKE,roleCode));
             }
         }
         return filters;

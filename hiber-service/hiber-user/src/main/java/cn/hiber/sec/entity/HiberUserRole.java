@@ -5,10 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author hiber
@@ -20,9 +17,8 @@ import javax.persistence.Table;
 @Table(name = "hiber_sec_user_role")
 public class HiberUserRole extends LongEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "USER_ID")
-    private HiberUser user;
+    @Column(name = "USER_ID",nullable = false)
+    private Long userId;
     @ManyToOne
     @JoinColumn(name = "ROLE_ID")
     private HiberRole role;
